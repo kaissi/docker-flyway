@@ -13,11 +13,16 @@
 # limitations under the License.
 
 FROM openjdk:8-jre-alpine
+MAINTAINER Marcos Rafael Kaissi Barbosa <mrkaissi@gmail.com>
+ARG VERSION
+ARG CREATION_DATE
+LABEL   version="${VERSION}" \
+		creationDate="${CREATION_DATE}"
 ARG FLYWAY_VERSION=4.2.0
 ARG TZ="Etc/UTC"
 ENV TZ ${TZ}
 WORKDIR /flyway
-RUN apk --no-cache add --update -U \
+RUN apk add --no-cache --update -U \
         bash \
         curl \
         dumb-init \
